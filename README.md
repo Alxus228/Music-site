@@ -1,6 +1,7 @@
-UI       : Angular
+UI       : Angular 2
 Backend  : Web API 2
-Database : ADO.NET(Dapper)
+DAL      : ADO.NET(Dapper)
+Database : MS SQL
 Project  : site for free searching / listening / download music
 
 Project Requirments :
@@ -13,4 +14,4 @@ ability to make a playlist of favorites in your account
 ability to assign a user to one of the roles: Admin, Editor, User
 ability to search for similar audio files
 ability for registered users to report an error for administration
-ability to send letters on emails
+ability to send letters on emails of registered users
