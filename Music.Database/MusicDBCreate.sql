@@ -24,7 +24,7 @@ BEGIN
 		[NickName]           NVARCHAR(30)   NOT NULL,
 		[Email]              NVARCHAR(200)  NOT NULL,
 		[Password]           NVARCHAR(30)   NOT NULL,
-		[RoleId]             INT REFERENCES [dbo].[User](Id), 
+		[RoleId]             INT REFERENCES [dbo].[Role](Id), 
 		[DateOfRegistration] DATETIME2      NOT NULL,
 		[Avatar]             VARBINARY(MAX),
 		[IsDeleted]          BIT            NOT NULL
