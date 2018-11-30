@@ -3,19 +3,6 @@ USE Music
 IF NOT (EXISTS (SELECT TOP 1 *
                        FROM INFORMATION_SCHEMA.TABLES
         WHERE TABLE_SCHEMA = 'dbo'
-        AND TABLE_NAME = 'Role'))
-BEGIN
-	CREATE TABLE [dbo].[Role]
-	(
-		[Id]        INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
-		[Name]      NVARCHAR(30) NOT NULL,
-		[IsDeleted] BIT          NOT NULL
-	)
-END
-
-IF NOT (EXISTS (SELECT TOP 1 *
-                       FROM INFORMATION_SCHEMA.TABLES
-        WHERE TABLE_SCHEMA = 'dbo'
         AND TABLE_NAME = 'User'))
 BEGIN
 	CREATE TABLE [dbo].[User]
@@ -24,7 +11,7 @@ BEGIN
 		[NickName]           NVARCHAR(30)   NOT NULL,
 		[Email]              NVARCHAR(200)  NOT NULL,
 		[Password]           NVARCHAR(30)   NOT NULL,
-		[RoleId]             INT REFERENCES [dbo].[Role](Id), 
+		[RoleType]           INT            NOT NULL, 
 		[DateOfRegistration] DATETIME2      NOT NULL,
 		[Avatar]             VARBINARY(MAX),
 		[IsDeleted]          BIT            NOT NULL
