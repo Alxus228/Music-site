@@ -7,8 +7,9 @@ IF NOT (EXISTS (SELECT TOP 1 *
 BEGIN
 	CREATE TABLE [dbo].[Role]
 	(
-		[Id]   INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
-		[Name] NVARCHAR(30) NOT NULL
+		[Id]        INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+		[Name]      NVARCHAR(30) NOT NULL,
+		[IsDeleted] BIT          NOT NULL
 	)
 END
 
@@ -23,7 +24,7 @@ BEGIN
 		[NickName]           NVARCHAR(30)   NOT NULL,
 		[Email]              NVARCHAR(200)  NOT NULL,
 		[Password]           NVARCHAR(30)   NOT NULL,
-		[RoleId]             INT            NOT NULL, 
+		[RoleId]             INT REFERENCES [dbo].[User](Id), 
 		[DateOfRegistration] DATETIME2      NOT NULL,
 		[Avatar]             VARBINARY(MAX),
 		[IsDeleted]          BIT            NOT NULL
@@ -125,4 +126,3 @@ BEGIN
 		FOREIGN KEY([UserId])  REFERENCES [dbo].[User](Id)
 	)
 END
-
