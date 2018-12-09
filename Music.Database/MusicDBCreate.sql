@@ -61,7 +61,7 @@ BEGIN
 	    [DurationInSeconds] INT            NOT NULL,
 		[Quality]           NVARCHAR(10)   NOT NULL,
 		[Icon]              VARBINARY(MAX),
-		[AudioFile]		    VARBINARY(MAX) NOT NULL,
+		[AudioFileId]		INT,
 		[DateOfCreation]    DATETIME2      NOT NULL,
 		[UserIdWhoCreated]  INT REFERENCES [dbo].[User](Id) ON DELETE SET NULL,
 		[IsDeleted]         BIT            NOT NULL
@@ -81,6 +81,20 @@ BEGIN
 		[UserIdWhoCreated] INT REFERENCES [dbo].[User](Id) ON DELETE CASCADE,
 		[TrackId]          INT REFERENCES [dbo].[Track](Id) ON DELETE CASCADE,
 		[IsDeleted]        BIT           NOT NULL
+	)
+END
+
+IF NOT (EXISTS (SELECT TOP 1 * 
+                FROM INFORMATION_SCHEMA.TABLES
+                WHERE TABLE_SCHEMA = 'dbo' 
+				AND TABLE_NAME = 'Tag'))
+BEGIN
+	CREATE TABLE [dbo].[AudioFile]
+	(
+		[Id]        INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+		[File]		VARBINARY(MAX) NOT NULL,
+		[TrackId]   INT,
+		[IsDeleted] BIT NOT NULL
 	)
 END
 
