@@ -87,7 +87,7 @@ END
 IF NOT (EXISTS (SELECT TOP 1 * 
                 FROM INFORMATION_SCHEMA.TABLES
                 WHERE TABLE_SCHEMA = 'dbo' 
-				AND TABLE_NAME = 'Tag'))
+				AND TABLE_NAME = 'AudioFile'))
 BEGIN
 	CREATE TABLE [dbo].[AudioFile]
 	(
