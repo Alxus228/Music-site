@@ -1,4 +1,4 @@
-UI       : Angular 2
+UI       : MVC 5
 Backend  : Web API 2
 DAL      : ADO.NET(Dapper)
 Database : MS SQL
